@@ -1,0 +1,41 @@
+{% extends 'Parent/parent_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/searchSM#about">
+  <table border="1"  class="table table-light" >
+
+      <tr align="center" class="table-secondary">
+      <td colspan="9"><h2><b>VIEW STUDY MATERIALS</b></h2></td>
+
+  </tr>
+
+
+
+    <tr>
+      <th colspan="5">Date
+        <label>
+        <input type="date" name="textfield" />
+ <button type="submit" class="btn btn-primary">
+      <span class="glyphicon glyphicon-search"></span>Search
+    </button></label></th>
+    </tr>
+    <tr>
+      <th >Date</th>
+      <th >Name</th>
+      <th >Studymaterial</th>
+      <th></th>
+
+    </tr>{% for i in val %}
+    <tr>
+      <td>{{ i.date }}</td>
+      <td>{{ i.name }}</td>
+      <td><a href=" {{ i.study_material.url }}" target="_blank" >{{ i.study_material }}</a> </td>
+      <td><a href="/attendtest/{{ i.id }}#about" class="bi bi-pencil-square">Attend Test</a> </td>
+    </tr>
+  {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

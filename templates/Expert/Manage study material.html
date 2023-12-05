@@ -1,0 +1,44 @@
+{% extends 'Expert/expert_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/search_SM#about">
+  <table width="268" height="112" border="1" class="table table-light">
+
+        <tr align="center" class="table-secondary">
+            <td colspan="10"><p><h2><b>MANAGE STUDY MATERIALS</b></h2></p></td>
+       </tr>
+
+    <tr>
+      <th colspan="4">Date
+        <label>
+        <input type="date" name="textfield" />
+            <button type="submit" class="btn btn-primary">
+      <span class="glyphicon glyphicon-search"></span> Search
+    </button>
+{#            <i class="bi bi-search"><input type="submit" name="Submit" value="Search" class="btn btn-primary"/></i>#}
+      </label></td>
+    </tr>
+    <tr>
+      <th>Name</th>
+      <th>Study material </th>
+      <th>Date </th>
+      <td>&nbsp;</td>
+    </tr>
+      {% for i in val  %}
+    <tr>
+      <td>{{ i.name }}</td>
+      <td><a href=" {{ i.study_material.url }}" target="_blank"> {{ i.study_material }}</a></td>
+      <td>{{ i.date }}</td>
+      <td><p><a href="/editsm/{{ i.id }}#about" class="btn btn-secondary"><i class="bi bi-pencil-square"></i></a></p>
+          <p><a href="/deleteSM/{{ i.id }}" onclick="return confirm('Are you sure you want to delete this ?')" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></a></p></td>
+    </tr>
+      {% endfor  %}
+    <tr>
+      <td colspan="3"><div align="center"><a href="/add_SM#about" class="btn btn-primary"><i class="bi bi-plus-square-fill"></i></a></div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

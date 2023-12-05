@@ -1,0 +1,68 @@
+{% extends 'homepage/index.html' %}
+{% block body %}
+
+<body>
+<form action="/updateexpert" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="259" border="6" class="table table-light"  style="width: 600px;">
+    <tr>
+      <td width="66">Fname</td>
+      <td width="177"><label>
+        <input type="text" name="textfield" value="{{ i.fname }}"  class="form-control" required pattern="[A-Z a-z .]{2,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Lname</td>
+      <td><label>
+        <input type="text" name="textfield2" value="{{ i.lname }}"  class="form-control" required pattern="[A-Z a-z .]{2,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Place</td>
+      <td><label>
+        <input type="text" name="textfield3" value="{{ i.place }}"  class="form-control" required pattern="[A-Z a-z .]{2,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Post</td>
+      <td><label>
+        <input type="text" name="textfield4"  value="{{ i.post }}"  class="form-control" required pattern="[A-Z a-z .]{2,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Pin</td>
+      <td><label>
+        <input type="text" name="textfield5" value="{{ i.pin }}"  class="form-control" required pattern="[0-9]{6}" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><label> <img src="{{ i.photo.url }}" width="100" height="100">
+        <input type="file" name="file"  value="{{ i.photo }}"  class="form-control" style="width:206px;"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Ph_no</td>
+      <td><label>
+        <input type="text" name="textfield6" value="{{ i.ph_no }}" class="form-control"  required pattern="[6789][0-9]{9}"/>
+      </label></td>
+    </tr>
+
+       <td>Email</td>
+      <td><label>
+        <input type="email" name="textfield9" value="{{ i.email }}" class="form-control" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"/>
+      </label></td>
+
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <label>
+        <input type="submit" name="Submit" value="Update" class="btn btn-primary" />
+        </label>
+      </div></td>
+    </tr>
+  </table>
+  <label></label>
+</form>
+</body>
+</html>
+{% endblock %}

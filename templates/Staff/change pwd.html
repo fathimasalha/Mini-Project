@@ -1,0 +1,32 @@
+{% extends 'Staff/staff_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="changepwd">
+  <table width="373" height="108" border="6"  class="table table-light">
+
+       <tr align="center" class="table-secondary">
+    <td colspan="4"><h2><b>CHANGE PASSWORD</b></h2></td>
+   </tr>
+    <tr>
+      <td width="188">Current Password </td>
+      <td width="169"><input type="password" name="textfield" required /></td>
+    </tr>
+    <tr>
+      <td>New Password </td>
+      <td><input type="password" name="textfield2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required /></td>
+    </tr>
+    <tr>
+      <td>Confirm Password </td>
+      <td><input type="password" name="textfield3" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 5 or more characters" required /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" name="Submit" value="Change" class="btn btn-primary"/>
+      </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

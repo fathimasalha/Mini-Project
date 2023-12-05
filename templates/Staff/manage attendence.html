@@ -1,0 +1,48 @@
+{% extends 'Staff/staff_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="s_mng_attendence#about">
+  <table width="628" height="246" border="1" class="table table-light" >
+
+
+   <tr align="center" class="table-secondary">
+    <td colspan="4"><p><h2><b>MANAGE  ATTENDANCE</b></h2></p></td>
+
+  </tr>
+
+    <tr>
+      <th colspan="4">From date
+
+        <input type="date" name="textfield" value="{{ f }}" max="{{ d1 }}"/>
+        To date
+        <input type="date" name="textfield2" value="{{ t }}" max="{{ d1 }}"/>
+
+            <button type="submit" class="btn btn-primary">
+      <span class="glyphicon glyphicon-search"></span> Search
+    </button>     </th>
+    </tr>
+    <tr>
+      <th width="64">Name</th>
+      <th width="143">Total working days </th>
+      <th width="121">Total present days </th>
+      <th width="121">percentage(%)</th>
+
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>&nbsp;{{ i.sn }}</td>
+      <td>&nbsp;{{ i.count }}</td>
+      <td>&nbsp;{{ i.sum }}</td>
+      <td>&nbsp;{{ i.p }}</td>
+
+    </tr>
+      {% endfor %}
+    <tr>
+      <td height="56" colspan="4"><div align="center"><a href="/add_attendence#about" class="btn btn-primary"><i class="bi bi-plus-square-fill"></i></a></div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

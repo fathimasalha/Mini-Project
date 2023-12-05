@@ -1,0 +1,40 @@
+{% extends 'Expert/expert_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/updatesm" enctype="multipart/form-data">
+   <table width="269" border="6"  class="table table-light" >
+    <tr>
+      <td>Class</td>
+        <td><select name="select" id="check" class="btn btn-light dropdown-toggle" style="width:204px;" required>
+          <option>--select--</option>
+           <option value="1" {% if i.Class == "1" %} selected {% endif  %}>1</option>
+          <option value="2" {% if i.Class == "2" %} selected {% endif  %}>2</option>
+          <option value="3" {% if i.Class == "3" %} selected {% endif  %}>3</option>
+          <option value="4" {% if i.Class == "4" %} selected {% endif  %}>4</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>
+        <input type="text" name="textfield" value="{{ i.name }}" class="form-control" style="width:204px;" required pattern="[A-Z a-z .]{2,100}"/>
+     </td>
+    </tr>
+    <tr>
+      <td>Study material </td>
+      <td>
+        <input type="file" name="file"  class="form-control" style="width:208px;"  /><a href="{{ i.study_material.url }}" target="_blank">{{ i.study_material }}</a>
+     </td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <label>
+        <input type="submit" name="Submit" value="Update"  class="btn btn-primary" />
+        </label>
+      </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
