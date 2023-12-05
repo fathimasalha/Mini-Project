@@ -1406,8 +1406,8 @@ def view_sugges(request,id):
         print(k,j)
         if k>j:
             sug=sug+". Your total perfomance is dropping"
-        # elif k ==j:
-        #     sug = sug + ". Your total perfomance is remains same"
+        elif k ==j:
+            sug = sug + ". Your total perfomance is constant"
         else:
             sug=sug+". Your total perfomance is increasing"
 
