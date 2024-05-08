@@ -1,0 +1,32 @@
+{% extends 'Parent/parent_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="257" height="93" border="1" class="table table-light" >
+
+      <tr align="center" class="table-secondary">
+      <td colspan="8"><h2><b>VIEW SUGGESTIONS</b></h2></td>
+       </tr>
+
+
+    <tr>
+      <th>Type</th>
+      <th>Mark(%)</th>
+      <th>Suggestions</th>
+      <td></td>
+    </tr>{% for i in val %}
+    <tr>
+      <td>{{ i.type}}</td>
+      <td>{{ i.mark}}</td>
+      <td>{{ i.suggestion}}</td>
+
+    </tr>
+       {% endfor %}
+
+  </table>
+<h3>{{ s }}</h3>
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,32 @@
+
+{% extends 'Expert/expert_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="">
+  <table width="200" border="1" class="table table-light">
+
+   <tr align="center" class="table-secondary">
+      <td colspan="8"><h2><b>MANAGE QUESTIONS</b></h2></td>
+       </tr>
+
+    <tr>
+      <th>Questions</th>
+      <th>Answers</th>
+      <th>Type</th>
+    </tr>
+      {% for i in val %}
+    <tr>
+      <td>{{ i.question }}</td>
+      <td>&nbsp;{{ i.answer}}</td>
+      <td> {{ i.type}}</td>
+      <td><a href="/deleteQA/{{ i.id }}#about" onclick="return confirm('Are you sure you want to delete this ?')"  class="btn btn-danger"><i class="bi bi-trash3-fill"></i></a></td>
+    </tr>{% endfor %}
+    <tr>
+      <td colspan="3"><div align="center"><a href="add_ques#about" class="btn btn-primary"><i class="bi bi-plus-square-fill"></i></a></div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

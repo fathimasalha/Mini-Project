@@ -1,0 +1,32 @@
+{% extends 'Parent/parent_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/insert_test#about">
+  <table width="280" height="117" border="1"  class="table table-light">
+    <tr>
+        <td colspan="2"><h3><b>Type : {{ ty }}</b></h3></td>
+    </tr>
+    <tr>
+      <td width="181" colspan="2">&nbsp;
+      {% for i in v %}
+          {% if i.t == "q" %}
+              <div align="left"><b>{{ i.qn }}.</b>  {{ i.q }}</div>
+          {% else %}
+          <div align="right">{{ i.q }}</div>
+          {% endif %}
+          {% endfor %}
+      </td>
+
+    </tr>
+     <tr>
+      <td><input type="text" name="textfield" required/></td>
+      <td><div align="center">
+        <input type="submit" name="Submit" value="SEND" class="btn btn-primary" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

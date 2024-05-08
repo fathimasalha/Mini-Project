@@ -1,0 +1,115 @@
+{% extends 'parent/parent_index.html' %}
+{% block body %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Calendar</title>
+    <style>
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 120px);
+            text-align: center;
+
+        }
+
+        .day {
+            width: 120px;
+            height: 60px;
+            line-height: 60px;
+            border: 2px solid #ccc;
+        }
+
+        .present {
+            background-color: green;
+            color: white;
+        }
+
+        .absent {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<form method="post" action="search_attendance#about">
+    <table width="100" height="50" border="1" class="table table-light">
+
+    <th width="20">Year</th>
+     <td><select name="select" id="check"  class="btn btn-light dropdown-toggle">
+          <option>--select--</option>
+
+          <option value="2022" {% if y == 2022 %} selected {% endif %}>2022</option>
+          <option>2023</option>
+          <option>2024</option>
+          <option>2025</option>
+      </select></td>
+
+    <th width="20">Month</th>
+     <td><select name="select1" id="check"  class="btn btn-light dropdown-toggle">
+          <option>--select--</option>
+          <option value="1">January</option>
+          <option value="2">February</option>
+          <option value="3">March</option>
+          <option value="4">April</option>
+          <option value="5">May</option>
+          <option value="6">June</option>
+          <option value="7">July</option>
+          <option value="8">August</option>
+          <option value="9">September</option>
+          <option value="10">October</option>
+          <option value="11">November</option>
+          <option value="12">December</option>
+      </select>
+     <input type="submit" name="Submit" value="Search"  class="btn btn-primary"/></td>
+      </table>
+</form>
+    <div id="calendar" class="calendar" width="100%"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let alist={{ l }}
+            function generateCalendar(year, month) {
+                const daysInMonth = new Date(year, month, 0).getDate();
+                const firstDay = new Date(year, month - 1, 1).getDay();
+
+                const calendarContainer = document.getElementById('calendar');
+                calendarContainer.innerHTML = '';
+
+                // Create day labels
+                const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                for (let day of daysOfWeek) {
+                    const dayElement = document.createElement('div');
+                    dayElement.classList.add('day');
+                    dayElement.textContent = day;
+                    calendarContainer.appendChild(dayElement);
+                }
+
+                // Fill in empty days before the first day of the month
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyDayElement = document.createElement('div');
+                    emptyDayElement.classList.add('day');
+                    calendarContainer.appendChild(emptyDayElement);
+                }
+
+                // Fill in days of the month with attendance status
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.classList.add('day');
+                    dayElement.textContent = day;
+                    const status = alist[day-1];
+                    if (status!=-1) {// Randomly set attendance (true for present, false for absent)
+                        dayElement.classList.add(status == 1 ? 'present' : 'absent');
+                    }
+                    calendarContainer.appendChild(dayElement);
+                }
+            }
+
+            const currentYear ={{ y }};
+            const currentMonth = {{ m }}; // Note: January is 0, February is 1, ..., December is 11
+            generateCalendar(currentYear, currentMonth);
+        });
+    </script>
+</body>
+</html>
+{% endblock %}

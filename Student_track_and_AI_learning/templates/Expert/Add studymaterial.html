@@ -1,0 +1,40 @@
+{% extends 'Expert/expert_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/addedSM#about" enctype="multipart/form-data">
+  <table width="263"  border="6"  class="table table-light" >
+    <tr>
+      <td>Class</td>
+       <td><select name="select" id="check" class="btn btn-light dropdown-toggle" style="width:204px;" required>
+          <option>--select--</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+      </select></td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td><label>
+        <input type="text" name="textfield" class="form-control" style="width:204px;" required pattern="[A-Z a-z .]{2,100}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Study material </td>
+      <td><label>
+        <input type="file" name="file" class="form-control"  style="width:206px;" required />
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <label>
+        <input type="submit" name="Submit" value="ADD"  class="btn btn-primary" />
+        </label>
+      </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

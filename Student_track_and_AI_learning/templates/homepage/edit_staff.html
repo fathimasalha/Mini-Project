@@ -1,0 +1,115 @@
+{% extends 'homepage/index.html' %}
+{% block body %}
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#check").change(function(){
+    var id=document.getElementById("check").value;
+   if (id == "1" ){
+    $(".cat1").show();
+}
+else{
+       $(".cat1").hide();
+   }
+  });
+});
+</script>
+
+</head>
+<body>
+<form action="/updatestaff" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table width="292" border="6"  class="table table-light" style="width: 600px;">
+    <tr>
+      <td width="94">Fname</td>
+      <td width="182"><label>
+        <input type="text" name="textfield" value="{{ i.fname }}"  class="form-control"  style="width:206px;" required pattern="[A-Z a-z .]{2,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Lname</td>
+      <td><label>
+        <input type="text" name="textfield2"  value="{{ i.lname }}"  class="form-control" style="width:206px;" required pattern="[A-Z a-z .]{2,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>
+        <input type="radio" name="gender" value="Female"  {% if i.gender == 'Female' %} checked{% endif %}/>Female
+        <input type="radio" name="gender" value="Male"  {% if i.gender == 'Male' %} checked{% endif %} />Male
+     </td>
+    </tr>
+    <tr>
+      <td>Place</td>
+      <td><label>
+        <input type="text" name="textfield4"   value="{{ i.place }}"   class="form-control" style="width:206px;" required pattern="[A-Z a-z .]{2,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Post</td>
+      <td><label>
+        <input type="text" name="textfield5"  value="{{ i.post }}"  class="form-control" style="width:206px;"  required pattern="[A-Z a-z .]{2,25}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Pin</td>
+      <td><label>
+        <input type="text" name="textfield6"  value="{{ i.pin }}"  class="form-control" style="width:206px;" required pattern="[0-9]{6}"/>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Ph_no</td>
+      <td><label>
+        <input type="text" name="textfield7"  value="{{ i.ph_no }}"  class="form-control" style="width:206px;" required pattern="[6789][0-9]{9}"/>
+      </label></td>
+    </tr>
+      <td>Email</td>
+      <td><label>
+        <input type="email" name="textfield10"  value="{{ i.email }}"  class="form-control" style="width:206px;" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}"/>
+      </label></td>
+    </tr>
+
+    <tr>
+      <td>Photo</td>
+      <td><label> <img src="{{ i.photo.url }}" width="100" height="100">
+        <input type="file" name="file"  value="{{ i.photo }}"  class="form-control" style="width:206px;"/>
+      </label></td>
+    </tr>
+  <tr>
+
+      <td>Type</td>
+      <td><select name="select" id="check" onchange="check()"  class="btn btn-light dropdown-toggle" style="width:206px;" required>
+
+
+
+          <option value="1" {% if i.Class == 1 or i.class == 4 or i.class == 2 or i.class == 3%} selected {% endif %}>Tutor</option>
+        <option value="2"   {% if i.Class == 0 %} selected {% endif %}>Teacher</option>
+
+
+      </select></td>
+    </tr> <tr style="display: none" class="cat1">
+
+      <td >Class</td>
+      <td><select name="select" id="check" class="btn btn-light dropdown-toggle">
+         <option>--select--</option>
+          {% for i in s %}
+          <option>{{ i }}</option>
+          {% endfor %}
+
+      </select> </td>
+
+    </tr>
+    <tr>
+      <td colspan="2"><div align="center">
+        <label>
+        <input type="submit" name="Submit" value="Update" class="btn btn-primary" />
+        </label>
+      </div></td>
+    </tr>
+  </table>
+</form>
+
+
+</body>
+</html>
+{% endblock %}

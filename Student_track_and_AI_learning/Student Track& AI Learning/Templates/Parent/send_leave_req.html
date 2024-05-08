@@ -1,0 +1,30 @@
+{% extends 'Parent/parent_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/addleave#about">
+  <table width="200"  border="6"  class="table table-light" >
+
+       <tr align="center" class="table-secondary">
+      <td colspan="8"<p><h2><b>SEND LEAVE REQUEST</b></h2></p></td>
+       </tr>
+
+    <tr>
+      <td>Date</td>
+      <td><input type="date" name="textfield" value="{{ d }}" max="{{ d1 }}"style="width:204px;" required /></td>
+    </tr>
+    <tr>
+      <td>Reason</td>
+      <td><input type="text" name="textfield2" style="width:204px;" required pattern="[A-Z a-z .]{2,100}" /></td>
+    </tr>
+
+    <tr>
+      <td colspan="2"><div align="center">
+        <input type="submit" name="Submit" value="Send" class="btn btn-primary" />
+      </div></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}

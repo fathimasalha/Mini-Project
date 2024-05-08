@@ -1,0 +1,41 @@
+{% extends 'Expert/expert_index.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/searchresult#about">
+  <table width="360" height="114" border="1"  class="table table-light" >
+
+   <tr align="center" class="table-secondary">
+      <td colspan="8"><h2><b>VIEW RESULT </b></h2></td>
+       </tr>
+
+
+    <tr>
+      <th colspan="4">Study Material
+          <select name="select"  class="btn btn-light dropdown-toggle"  required>
+          {% for i in val %}
+          <option value={{ i.id }} {% if  i.id == sm1 %} selected {% endif %}>{{ i.name }}</option>
+          {% endfor %}
+      </select>
+      <button type="submit" class="btn btn-primary">
+      <span class="glyphicon glyphicon-search"></span> Search</th>
+    </tr>
+    <tr>
+      <th>Student Name</th>
+      <th>Type</th>
+      <th>Date</th>
+      <th>Mark</th>
+    </tr>
+  {% for i in v %}
+    <tr>
+      <td>{{ i.name }}</td>
+      <td>&nbsp;{{ i.ty }}</td>
+        <td>{{ i.date }}</td>
+        <td>{{ i.mark }}</td>
+    </tr>
+  {% endfor %}
+  </table>
+</form>
+</body>
+</html>
+{% endblock %}
